@@ -1,0 +1,7 @@
+controller:
+  service:
+    type: NodePort
+ingressClass:
+  name: haproxy
+  create: true
+  isDefaultClass: true

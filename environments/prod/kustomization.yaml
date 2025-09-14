@@ -4,3 +4,4 @@ namespace: prod
 resources:
   - namespace.yaml
   - ../../apps/sample-api/overlays/prod
+  - ../../platform/haproxy/app.yaml
