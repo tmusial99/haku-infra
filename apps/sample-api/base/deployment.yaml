@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: sample-api }
+  template:
+    metadata:
+      labels: { app: sample-api }
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/itkq/hello-http:latest
+          ports: [{ containerPort: 8080 }]
