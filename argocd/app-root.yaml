@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:tmusial99/haku-infra.git
-    targetRevision: main
+    targetRevision: master
     path: environments/prod
   destination:
     server: https://kubernetes.default.svc
