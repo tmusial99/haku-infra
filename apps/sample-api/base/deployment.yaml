@@ -12,5 +12,8 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/itkq/hello-http:latest
-          ports: [{ containerPort: 8080 }]
+          image: hashicorp/http-echo:0.2.3
+          args:
+            - "-text=Hello from homelab!"
+          ports:
+            - containerPort: 5678
