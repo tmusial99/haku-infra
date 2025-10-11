@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: all
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/tmusial99/haku-infra.git
+        revision: master
+        directories:
+          - path: apps/*/*
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+      labels:
+        env: '{{ path.dirname | base }}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/tmusial99/haku-infra.git
+        targetRevision: master
+        path: '{{ path }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ path.dirname | base }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
