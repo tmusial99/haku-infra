@@ -15,7 +15,7 @@ spec:
     metadata:
       name: '{{ .path.basename }}'
       labels:
-        env: '{{ .path.dirname | base }}'
+        env: '{{ .path.path | dir | base }}'
     spec:
       project: default
       source:
@@ -24,7 +24,7 @@ spec:
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{ .path.dirname | base }}'
+        namespace: '{{ .path.path | dir | base }}'
       syncPolicy:
         automated:
           prune: true
