@@ -22,6 +22,8 @@ spec:
         repoURL: https://github.com/tmusial99/haku-infra.git
         targetRevision: master
         path: '{{ .path.path }}'
+        kustomize:
+          enableHelm: true
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ .path.path | dir | base }}'
