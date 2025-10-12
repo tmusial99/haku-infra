@@ -2,5 +2,5 @@ configs:
   cm:
     kustomize.buildOptions: "--enable-helm"
 
-applicationset:
+applicationSet:
   enabled: true
