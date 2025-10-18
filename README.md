@@ -25,9 +25,13 @@ kubectl get nodes
 
 ## Install argoCD
 ```
-helm upgrade --install argocd argo/argo-cd -n argocd --create-namespace -f bootstrap/install-argo.yaml
+helm repo add argo https://argoproj.github.io/argo-helm
 
-kubectl apply -n argocd -f bootstrap/app-root.yaml
+helm repo update
+
+helm upgrade --install argocd argo/argo-cd --namespace argocd --create-namespace
+
+kubectl apply -f app-of-apps.yaml
 
 kubectl -n argocd patch svc argocd-server -p '{"spec": {"type": "NodePort"}}'
 

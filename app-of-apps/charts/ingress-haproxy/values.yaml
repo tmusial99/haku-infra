@@ -10,3 +10,5 @@ chart:
 helmValues:
   controller:
     ingressClass: haproxy
+    service:
+      type: LoadBalancer
