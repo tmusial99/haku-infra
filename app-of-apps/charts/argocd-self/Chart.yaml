@@ -2,7 +2,3 @@ apiVersion: v2
 name: argocd-self
 version: 0.1.0
 type: application
-dependencies:
-  - name: _all-templates
-    version: "0.1.0"
-    repository: "file://../_all-templates"

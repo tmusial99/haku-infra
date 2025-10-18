@@ -1,4 +1,4 @@
-{{- define "templates.application" -}}
+{{- define "app-of-apps.application" -}}
 {{- $ := .root -}}
 {{- $v := .vals -}}
 
@@ -32,13 +32,13 @@ spec:
       values: |
         {{- toYaml $v.helmValues | nindent 8 }}
       {{- end }}
-      {{- if $v.helm.valueFiles }}
+      {{- if and $v.helm $v.helm.valueFiles }}
       valueFiles:
         {{- range $vf := $v.helm.valueFiles }}
         - {{ $vf | quote }}
         {{- end }}
       {{- end }}
-      {{- if $v.helm.values }}
+      {{- if and $v.helm $v.helm.values }}
       values: |
         {{- toYaml $v.helm.values | nindent 8 }}
       {{- end }}

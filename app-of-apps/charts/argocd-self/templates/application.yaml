@@ -1,1 +1,1 @@
-{{- include "templates.application" (dict "root" . "vals" .Values) }}
+{{- include "app-of-apps.application" (dict "root" . "vals" .Values) }}
