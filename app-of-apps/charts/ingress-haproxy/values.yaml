@@ -1,0 +1,14 @@
+name: ingress-haproxy
+namespace: infra
+syncWave: "-20"
+
+chart:
+  repoURL: https://haproxytech.github.io/helm-charts
+  name: kubernetes-ingress
+  version: 1.45.1
+
+helmValues:
+  controller:
+    ingressClass: haproxy
+    service:
+      type: LoadBalancer
