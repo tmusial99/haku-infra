@@ -1,0 +1,5 @@
+name: namespaces
+namespace: argocd
+syncWave: "-999"
+
+path: apps/namespaces
