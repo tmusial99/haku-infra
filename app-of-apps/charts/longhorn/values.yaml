@@ -8,6 +8,9 @@ chart:
   version: 1.10.0
 
 helmValues:
+  preUpgradeChecker:
+    jobEnabled: false
+    
   persistence:
     defaultClass: true
     defaultClassReplicaCount: 1
