@@ -9,5 +9,6 @@ global:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
   repoURL: https://github.com/tmusial99/haku-infra.git
   targetRevision: master
