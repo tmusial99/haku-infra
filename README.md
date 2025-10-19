@@ -5,8 +5,9 @@ sudo k3s-uninstall.sh
 
 ## Install k3s
 ```
-# Install k3s (without Traefik)
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable traefik" sh -
+# Install k3s (without Traefik and local-path)
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --disable local-storage" sh -
+
 
 # Create .kube directory if it doesn't exist
 mkdir -p ~/.kube

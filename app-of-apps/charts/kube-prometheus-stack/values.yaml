@@ -1,0 +1,60 @@
+name: kube-prometheus-stack
+namespace: monitoring
+syncWave: "-5"
+
+chart:
+  repoURL: https://prometheus-community.github.io/helm-charts
+  name: kube-prometheus-stack
+  version: 78.3.2
+
+helmValues:
+  grafana:
+    enabled: true
+    replicas: 1
+    ingress:
+      enabled: true
+      ingressClassName: haproxy
+      hosts:
+        - grafana.lan
+      tls: []
+    persistence:
+      enabled: true
+      storageClassName: "longhorn"
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
+    grafana.ini:
+      auth:
+        disable_login_form: true
+        disable_signout_menu: true
+      auth.anonymous:
+        enabled: true
+        org_role: Admin
+      users:
+        allow_sign_up: false
+
+  prometheus:
+    ingress:
+      enabled: true
+      ingressClassName: haproxy
+      hosts:
+        - prometheus.lan
+      tls: []
+    prometheusSpec:
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: "longhorn"
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 50Gi
+      
+  kubeStateMetrics:
+    enabled: true
+
+  nodeExporter:
+    enabled: true
+
+  alertmanager:
+    enabled: false
