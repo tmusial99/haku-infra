@@ -8,4 +8,6 @@ chart:
   version: 2.17.7
 
 helmValues:
+  fullnameOverride: sealed-secrets-controller # default for kubeseal
   keyrenewperiod: "0"
+  
