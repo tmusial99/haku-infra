@@ -30,12 +30,9 @@ helm repo add argo https://argoproj.github.io/argo-helm
 
 helm repo update
 
-helm upgrade --install argocd-bootstrap argo/argo-cd --namespace argocd --create-namespace
+helm upgrade --install argocd argo/argo-cd --namespace argocd --create-namespace
 
 kubectl apply -f app-of-apps.yaml
-
-# Wait intil argocd-self is up and then
-helm -n argocd uninstall argocd-bootstrap
 ```
 
 

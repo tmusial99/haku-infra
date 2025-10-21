@@ -1,4 +1,4 @@
-name: argocd-self
+name: argocd
 namespace: argocd
 syncWave: "-10"
 
