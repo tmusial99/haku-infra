@@ -1,6 +1,9 @@
 ## Uninstall k3s
 ```
 sudo k3s-uninstall.sh
+chmod +x clear-longhorn-devices.sh
+sudo ./clear-longhorn-devices.sh [--dry-run]
+
 ```
 
 ## Install k3s
@@ -41,5 +44,5 @@ kubectl apply -f app-of-apps.yaml
 username: admin
 password:
 
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```

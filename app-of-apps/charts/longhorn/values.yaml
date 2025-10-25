@@ -27,6 +27,8 @@ helmValues:
     defaultDataPath: /var/lib/longhorn
     # Allow Longhorn to create a default disk on the node automatically
     createDefaultDiskLabeledNodes: false
+    # Fix for "device apparently in use" error during volume formatting
+    defaultMkfsParams: "-F"
 
   # Reduce UI replicas for single-node
   longhornUI:
