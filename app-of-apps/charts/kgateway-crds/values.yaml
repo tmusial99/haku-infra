@@ -3,6 +3,6 @@ namespace: kgateway-system
 syncWave: "-900"
 
 chart:
-  repoURL: oci://cr.kgateway.dev/kgateway-dev/charts
+  repoURL: oci://cr.kgateway.dev/kgateway-dev/charts/kgateway-crds
   name: kgateway-crds
   version: v2.1.1
