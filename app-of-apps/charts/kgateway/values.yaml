@@ -1,0 +1,15 @@
+name: kgateway
+namespace: kgateway-system
+syncWave: "-20"
+
+chart:
+  repoURL: oci://cr.kgateway.dev/kgateway-dev/charts/kgateway
+  name: kgateway
+  version: v2.1.1
+
+helmValues:
+  agentgateway:
+    enabled: true
+  controller:
+    image:
+      pullPolicy: Always
