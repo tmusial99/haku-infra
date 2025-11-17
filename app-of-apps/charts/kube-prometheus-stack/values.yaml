@@ -5,7 +5,7 @@ syncWave: "-5"
 chart:
   repoURL: https://prometheus-community.github.io/helm-charts
   name: kube-prometheus-stack
-  version: 78.3.2
+  version: 79.5.0
 
 helmValues:
   grafana:
@@ -34,12 +34,14 @@ helmValues:
         allow_sign_up: false
 
   prometheus:
-    ingress:
-      enabled: true
-      ingressClassName: haproxy
-      hosts:
-        - prometheus.lan
-      tls: []
+    route:
+      main:
+        enabled: true
+        parentRefs:
+          - name: agentgateway
+            namespace: kgateway-system
+        hostnames:
+          - prometheus.lan
     prometheusSpec:
       storageSpec:
         volumeClaimTemplate:

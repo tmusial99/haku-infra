@@ -1,0 +1,5 @@
+name: kgateway-gateways
+namespace: argocd
+syncWave: "-19"
+
+path: apps/kgateway-gateways
