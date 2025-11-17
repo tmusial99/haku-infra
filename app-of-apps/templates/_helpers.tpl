@@ -12,6 +12,7 @@ metadata:
   {{- if $v.syncWave }}
   annotations:
     argocd.argoproj.io/sync-wave: {{ $v.syncWave | quote }}
+    argocd.argoproj.io/compare-options: ServerSideDiff=true
   {{- end }}
 
 spec:
