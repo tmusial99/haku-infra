@@ -19,9 +19,7 @@ spec:
   source:
     {{- if $v.chart }}
     repoURL: {{ $v.chart.repoURL }}
-    {{- if $v.chart.name }}
     chart: {{ $v.chart.name }}
-    {{- end }}
     targetRevision: {{ $v.chart.version }}
     {{- else if $v.path }}
     repoURL: {{ $.Values.global.repoURL }}
