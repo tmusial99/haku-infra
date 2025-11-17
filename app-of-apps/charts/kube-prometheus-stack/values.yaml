@@ -38,7 +38,7 @@ helmValues:
       main:
         enabled: true
         parentRefs:
-          - name: agentgateway
+          - name: http
             namespace: kgateway-system
         hostnames:
           - prometheus.lan
