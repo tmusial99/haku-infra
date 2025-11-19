@@ -27,6 +27,15 @@ source ~/.bashrc
 kubectl get nodes
 ```
 
+## Prepare the node
+```
+# Import sealed-secrets-key
+kubectl apply -f sealed-secrets-key.yaml
+
+# Install Gateway API CRDs
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/standard-install.yaml
+```
+
 ## Install argoCD
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
