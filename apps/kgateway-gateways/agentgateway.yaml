@@ -12,3 +12,14 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
+  - protocol: HTTPS
+    port: 443
+    name: https
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: wildcard-tmdev-pl-tls
+        namespace: cert-manager
+    allowedRoutes:
+      namespaces:
+        from: All
