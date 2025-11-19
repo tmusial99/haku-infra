@@ -5,7 +5,7 @@ syncWave: "-10"
 chart:
   repoURL: https://argoproj.github.io/argo-helm
   name: argo-cd
-  version: 9.0.1
+  version: 9.1.3
 
 helmValues:
   configs:
@@ -13,7 +13,10 @@ helmValues:
       server.insecure: "true"
 
   server:
-    ingress:
+    httproute:
       enabled: true
-      ingressClassName: haproxy
-      hostname: argocd.lan
+      parentRefs:
+        - name: agentgateway
+          namespace: kgateway-system
+      hostnames:
+        - argocd.tmdev.pl

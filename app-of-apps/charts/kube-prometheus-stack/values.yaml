@@ -11,12 +11,14 @@ helmValues:
   grafana:
     enabled: true
     replicas: 1
-    ingress:
-      enabled: true
-      ingressClassName: haproxy
-      hosts:
-        - grafana.lan
-      tls: []
+    route:
+      main:
+        enabled: true
+        parentRefs:
+          - name: agentgateway
+            namespace: kgateway-system
+        hostnames:
+          - grafana.tmdev.pl
     persistence:
       enabled: true
       storageClassName: "longhorn"
@@ -38,10 +40,10 @@ helmValues:
       main:
         enabled: true
         parentRefs:
-          - name: http
+          - name: agentgateway
             namespace: kgateway-system
         hostnames:
-          - prometheus.lan
+          - prometheus.tmdev.pl
     prometheusSpec:
       storageSpec:
         volumeClaimTemplate:

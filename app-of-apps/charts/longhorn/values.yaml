@@ -17,12 +17,6 @@ helmValues:
     # Fix for "device apparently in use" error during volume formatting
     defaultMkfsParams: "-F"
 
-  ingress:
-    enabled: true
-    ingressClassName: haproxy
-    host: longhorn.lan
-    tls: false
-
   # Default settings tuned for a single-server (non-HA) environment
   defaultSettings:
     defaultReplicaCount: "1"
@@ -39,3 +33,22 @@ helmValues:
     provisionerReplicaCount: "1"
     resizerReplicaCount: "1"
     snapshotterReplicaCount: "1"
+
+  # Add HTTPRoute
+  extraObjects:
+    - apiVersion: gateway.networking.k8s.io/v1beta1
+      kind: HTTPRoute
+      metadata:
+        name: longhorn
+        namespace: longhorn-system
+      spec:
+        parentRefs:
+          - name: agentgateway
+            namespace: kgateway-system
+        hostnames:
+          - longhorn.tmdev.pl
+        rules:
+          - backendRefs:
+              - name: longhorn-frontend
+                port: 80
+                namespace: longhorn-system
