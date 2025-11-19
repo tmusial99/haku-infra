@@ -19,7 +19,7 @@ spec:
       mode: Terminate
       certificateRefs:
       - name: wildcard-tmdev-pl-tls
-        namespace: cert-manager
+        kind: Secret
     allowedRoutes:
       namespaces:
         from: All

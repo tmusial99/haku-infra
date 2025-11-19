@@ -39,7 +39,7 @@ helmValues:
       kind: Certificate
       metadata:
         name: wildcard-tmdev-pl
-        namespace: cert-manager
+        namespace: kgateway-system
       spec:
         secretName: wildcard-tmdev-pl-tls
         issuerRef:
