@@ -1,16 +1,16 @@
-name: prowlarr
+name: sonarr
 namespace: media
 
 chart:
   repoURL: https://charts.pree.dev
-  name: prowlarr
-  version: 1.49.1
+  name: sonarr
+  version: 1.11.1
 
 helmValues:
   image:
-    repository: ghcr.io/home-operations/prowlarr
+    repository: ghcr.io/home-operations/sonarr
     pullPolicy: IfNotPresent
-    tag: 2.3.0
+    tag: 4.0.16
 
   env:
     TZ: Europe/Warsaw
@@ -19,10 +19,11 @@ helmValues:
     config:
       enabled: true
       storageClass: longhorn
-      size: 1Gi
+      size: 5Gi
       retain: true
 
-  podSecurityContext:
-    fsGroup: 1000
-    runAsUser: 1000
-    runAsGroup: 1000
+    media:
+      enabled: true
+      existingClaim: media-nfs-pvc
+      mountPath: /media
+      subPath: tv
