@@ -74,9 +74,25 @@ helmValues:
         - name: radarr-media
           mountPath: media
 
-  jellyseerr:
-    enabled: false
   bazarr:
+    enabled: true
+    env:
+      TZ: "Europe/Warsaw"
+    persistence:
+      enabled: true
+      path: config
+      storageClass: longhorn
+      size: 5Gi
+      additionalVolumes:
+        - name: bazarr-sonarr-media
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc
+      additionalMounts:
+        - name: bazarr-sonarr-media
+          mountPath: tv
+          subPath: tv
+    
+  jellyseerr:
     enabled: false
   lidarr:
     enabled: false
