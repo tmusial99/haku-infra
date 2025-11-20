@@ -26,4 +26,3 @@ helmValues:
       enabled: true
       existingClaim: media-nfs-pvc
       mountPath: /downloads
-      subPath: downloads

@@ -21,16 +21,10 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       retain: true
-    downloads:
-      enabled: true
-      existingClaim: media-nfs-pvc
-      mountPath: /downloads
-      subPath: downloads
     media:
       enabled: true
       existingClaim: media-nfs-pvc
       mountPath: /media
-      subPath: tv
 
   podSecurityContext:
     fsGroup: 1000
