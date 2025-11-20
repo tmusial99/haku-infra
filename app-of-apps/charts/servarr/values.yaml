@@ -48,11 +48,11 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: media
+        - name: sonarr-media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: media
+        - name: sonarr-media
           mountPath: media
 
   radarr:
@@ -67,16 +67,12 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: media
+        - name: radarr-media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: media
+        - name: radarr-media
           mountPath: media
-
-  
-
-  
 
   jellyseerr:
     enabled: false
