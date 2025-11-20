@@ -11,6 +11,6 @@ spec:
     - sonarr.tmdev.pl
   rules:
     - backendRefs:
-        - name: sonarr
-          port: 8989
+        - name: servarr-sonarr
+          port: 80
           namespace: media
