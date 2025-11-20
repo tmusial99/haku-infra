@@ -80,17 +80,15 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      path: config
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: bazarr-sonarr-media
+        - name: bazarr-media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: bazarr-sonarr-media
-          mountPath: tv
-          subPath: tv
+        - name: bazarr-media
+          mountPath: /media
   
   jellyfin:
     enabled: true
