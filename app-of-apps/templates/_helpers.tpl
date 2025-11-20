@@ -9,12 +9,11 @@ metadata:
   namespace: {{ $.Values.global.destination.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  {{- if $v.syncWave }}
   annotations:
+    {{- if $v.syncWave }}
     argocd.argoproj.io/sync-wave: {{ $v.syncWave | quote }}
+    {{- end }}
     argocd.argoproj.io/compare-options: ServerSideDiff=true
-  {{- end }}
-
 spec:
   project: {{ $.Values.global.project }}
   source:

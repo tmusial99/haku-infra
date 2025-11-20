@@ -1,0 +1,4 @@
+name: kgateway-routes
+namespace: argocd
+
+path: apps/kgateway-routes
