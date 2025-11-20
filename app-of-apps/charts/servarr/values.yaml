@@ -39,9 +39,7 @@ helmValues:
       size: 1Gi
 
   sonarr:
-    enabled: false
-    image:
-      tag: "4.0.16"
+    enabled: true
     env:
       TZ: "Europe/Warsaw"
     persistence:
