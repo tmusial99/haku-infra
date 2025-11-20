@@ -91,7 +91,18 @@ helmValues:
         - name: bazarr-sonarr-media
           mountPath: tv
           subPath: tv
-    
+  
+  jellyfin:
+    enabled: true
+    persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 10Gi
+      media:
+        enabled: true
+        existingClaim: media-nfs-pvc
+
   jellyseerr:
     enabled: false
   lidarr:
@@ -100,5 +111,4 @@ helmValues:
     enabled: false
   cleanuparr:
     enabled: false
-  jellyfin:
-    enabled: false
+  
