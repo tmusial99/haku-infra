@@ -1,0 +1,90 @@
+name: servarr
+namespace: media
+
+chart:
+  repoURL: https://charts.kubito.dev
+  name: servarr
+  version: 1.2.2
+
+helmValues:
+  qbittorrent:
+    enabled: true
+    env:
+      TZ: "Europe/Warsaw"
+    persistence:
+      enabled: true
+      path: config
+      storageClass: longhorn
+      size: 1Gi
+      additionalVolumes:
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc
+      additionalMounts:
+        - name: downloads
+          mountPath: downloads
+          subPath: torrent
+
+  prowlarr:
+    enabled: true
+    env:
+      TZ: "Europe/Warsaw"
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      size: 1Gi
+
+  sonarr:
+    enabled: false
+    image:
+      tag: "4.0.16"
+    env:
+      TZ: "Europe/Warsaw"
+    persistence:
+      enabled: true
+      path: config
+      storageClass: longhorn
+      size: 5Gi
+      additionalVolumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc
+      additionalMounts:
+        - name: media
+          mountPath: media
+
+  radarr:
+    enabled: false
+    image:
+      tag: "5.14.0"
+    env:
+      TZ: "Europe/Warsaw"
+    persistence:
+      enabled: true
+      path: config
+      storageClass: longhorn
+      size: 5Gi
+      additionalVolumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-nfs-pvc
+      additionalMounts:
+        - name: media
+          mountPath: media
+
+  
+
+  
+
+  jellyseerr:
+    enabled: false
+  bazarr:
+    enabled: false
+  lidarr:
+    enabled: false
+  flaresolverr:
+    enabled: false
+  cleanuparr:
+    enabled: false
+  jellyfin:
+    enabled: false

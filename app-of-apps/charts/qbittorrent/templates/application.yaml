@@ -1,1 +1,0 @@
-{{- include "app-of-apps.application" (dict "root" . "vals" .Values) }}

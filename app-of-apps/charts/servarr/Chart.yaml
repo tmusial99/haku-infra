@@ -1,4 +1,4 @@
 apiVersion: v2
-name: qbittorrent
+name: servarr
 type: application
 version: 0.1.0
