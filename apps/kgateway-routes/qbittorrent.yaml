@@ -11,6 +11,6 @@ spec:
     - torrent.tmdev.pl
   rules:
     - backendRefs:
-        - name: qbittorrent
+        - name: servarr-qbittorrent-web
           port: 8080
           namespace: media

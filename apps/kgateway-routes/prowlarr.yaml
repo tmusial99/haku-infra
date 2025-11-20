@@ -11,6 +11,6 @@ spec:
     - prowlarr.tmdev.pl
   rules:
     - backendRefs:
-        - name: prowlarr
+        - name: servarr-prowlarr
           port: 9696
           namespace: media
