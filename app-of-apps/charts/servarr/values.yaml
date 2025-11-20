@@ -9,6 +9,10 @@ chart:
 helmValues:
   qbittorrent:
     enabled: true
+    image:
+      repository: ghcr.io/linuxserver/qbittorrent
+      pullPolicy: IfNotPresent
+      tag: 5.1.2
     env:
       TZ: "Europe/Warsaw"
     persistence:
