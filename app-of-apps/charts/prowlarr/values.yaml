@@ -1,0 +1,23 @@
+name: prowlarr
+namespace: media
+
+chart:
+  repoURL: https://charts.pree.dev
+  name: prowlarr
+  version: 1.49.1
+
+helmValues:
+  image:
+    repository: ghcr.io/home-operations/prowlarr
+    pullPolicy: IfNotPresent
+    tag: 2.3.0
+
+  env:
+    TZ: Europe/Warsaw
+
+  persistence:
+    config:
+      enabled: true
+      storageClass: longhorn
+      size: 1Gi
+      retain: true
