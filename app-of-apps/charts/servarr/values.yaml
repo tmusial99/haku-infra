@@ -20,13 +20,6 @@ helmValues:
       path: config
       storageClass: longhorn
       size: 1Gi
-      additionalVolumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: media-nfs-pvc
-      additionalMounts:
-        - name: media
-          mountPath: /media
 
   prowlarr:
     enabled: true
@@ -46,13 +39,6 @@ helmValues:
       path: config
       storageClass: longhorn
       size: 5Gi
-      additionalVolumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: media-nfs-pvc
-      additionalMounts:
-        - name: media
-          mountPath: /media
 
   radarr:
     enabled: false
@@ -65,13 +51,6 @@ helmValues:
       path: config
       storageClass: longhorn
       size: 5Gi
-      additionalVolumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: media-nfs-pvc
-      additionalMounts:
-        - name: media
-          mountPath: /media
 
   bazarr:
     enabled: true
@@ -79,15 +58,9 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
+      path: config
       storageClass: longhorn
       size: 5Gi
-      additionalVolumes:
-        - name: media
-          persistentVolumeClaim:
-            claimName: media-nfs-pvc
-      additionalMounts:
-        - name: media
-          mountPath: /media
   
   jellyfin:
     enabled: true
