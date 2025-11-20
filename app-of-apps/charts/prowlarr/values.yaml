@@ -14,10 +14,4 @@ helmValues:
 
   env:
     TZ: Europe/Warsaw
-
-  persistence:
-    config:
-      enabled: true
-      storageClass: longhorn
-      size: 1Gi
-      retain: true
+    
