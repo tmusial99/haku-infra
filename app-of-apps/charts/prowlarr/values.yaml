@@ -14,4 +14,11 @@ helmValues:
 
   env:
     TZ: Europe/Warsaw
-    
+    SENTRY_DSN: ""
+
+  persistence:
+    config:
+      enabled: true
+      storageClass: longhorn
+      size: 1Gi
+      retain: true
