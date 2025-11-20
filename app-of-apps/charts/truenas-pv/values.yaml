@@ -1,0 +1,5 @@
+name: truenas-pv
+namespace: argocd
+syncWave: "-9" # longhorn is also -9
+
+path: apps/truenas-pv

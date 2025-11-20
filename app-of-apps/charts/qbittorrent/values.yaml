@@ -1,0 +1,28 @@
+name: qbittorrent
+namespace: media
+
+chart:
+  repoURL: oci://ghcr.io/gabe565/charts/qbittorrent
+  name: qbittorrent
+  version: 0.4.1
+
+helmValues:
+  image:
+    repository: ghcr.io/linuxserver/qbittorrent
+    pullPolicy: IfNotPresent
+    tag: 5.1.2
+
+  env:
+    TZ: Europe/Warsaw
+
+  persistence:
+    config:
+      enabled: true
+      storageClass: longhorn
+      size: 1Gi
+      retain: true
+
+    downloads:
+      enabled: true
+      existingClaim: media-nfs-pvc
+      mountPath: /downloads
