@@ -21,13 +21,12 @@ helmValues:
       storageClass: longhorn
       size: 1Gi
       additionalVolumes:
-        - name: downloads
+        - name: media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: downloads
-          mountPath: downloads
-          subPath: torrent
+        - name: media
+          mountPath: /media
 
   prowlarr:
     enabled: true
@@ -48,12 +47,12 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: sonarr-media
+        - name: media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: sonarr-media
-          mountPath: media
+        - name: media
+          mountPath: /media
 
   radarr:
     enabled: false
@@ -67,12 +66,12 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: radarr-media
+        - name: media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: radarr-media
-          mountPath: media
+        - name: media
+          mountPath: /media
 
   bazarr:
     enabled: true
@@ -83,11 +82,11 @@ helmValues:
       storageClass: longhorn
       size: 5Gi
       additionalVolumes:
-        - name: bazarr-media
+        - name: media
           persistentVolumeClaim:
             claimName: media-nfs-pvc
       additionalMounts:
-        - name: bazarr-media
+        - name: media
           mountPath: /media
   
   jellyfin:
