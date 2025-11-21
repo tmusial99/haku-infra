@@ -3,7 +3,14 @@
 sudo k3s-uninstall.sh
 chmod +x clear-longhorn-devices.sh
 sudo ./clear-longhorn-devices.sh [--dry-run]
+```
 
+## Disable multipathd if enabled (Longhorn doesn't like it)
+```
+sudo systemctl stop multipathd
+sudo systemctl disable multipathd
+sudo multipath -F
+sudo systemctl restart k3s
 ```
 
 ## Install k3s
