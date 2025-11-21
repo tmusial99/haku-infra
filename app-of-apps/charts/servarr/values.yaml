@@ -7,6 +7,17 @@ chart:
   version: 1.2.2
 
 helmValues:
+  jellyfin:
+    enabled: true
+    persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 5Gi
+      media:
+        enabled: true
+        existingClaim: media-nfs-pvc
+
   qbittorrent:
     enabled: true
     image:
@@ -17,9 +28,8 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      path: config
       storageClass: longhorn
-      size: 1Gi
+      size: 2Gi
 
   prowlarr:
     enabled: true
@@ -28,7 +38,7 @@ helmValues:
     persistence:
       enabled: true
       storageClass: longhorn
-      size: 1Gi
+      size: 2Gi
 
   sonarr:
     enabled: true
@@ -36,21 +46,17 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      path: config
       storageClass: longhorn
-      size: 5Gi
+      size: 2Gi
 
   radarr:
-    enabled: false
-    image:
-      tag: "5.14.0"
+    enabled: true
     env:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      path: config
       storageClass: longhorn
-      size: 5Gi
+      size: 2Gi
 
   bazarr:
     enabled: true
@@ -58,21 +64,10 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      path: config
       storageClass: longhorn
-      size: 5Gi
+      size: 2Gi
   
-  jellyfin:
-    enabled: true
-    persistence:
-      config:
-        enabled: true
-        storageClass: longhorn
-        size: 10Gi
-      media:
-        enabled: true
-        existingClaim: media-nfs-pvc
-
+  
   jellyseerr:
     enabled: false
   lidarr:
