@@ -9,6 +9,8 @@ chart:
 helmValues:
   jellyfin:
     enabled: true
+    image:
+      tag: 10.11.3
     persistence:
       config:
         enabled: true
