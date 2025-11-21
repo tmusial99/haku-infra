@@ -9,11 +9,6 @@ chart:
 helmValues:
   jellyfin:
     enabled: true
-    extraEnvVars:
-      - name: TZ
-        value: "Europe/Warsaw"
-      - name: JELLYFIN_CACHE_DIR
-        value: "/tmp/jellyfin-cache"
     persistence:
       config:
         enabled: true
@@ -22,6 +17,12 @@ helmValues:
       media:
         enabled: true
         existingClaim: media-nfs-pvc
+    extraVolumeMounts:
+      - name: transcodes
+        mountPath: /config/cache/transcodes
+    extraVolumes:
+      - name: transcodes
+        emptyDir: {}
 
   qbittorrent:
     enabled: true
