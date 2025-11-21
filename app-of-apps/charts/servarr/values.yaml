@@ -13,7 +13,7 @@ helmValues:
       config:
         enabled: true
         storageClass: longhorn
-        size: 50Gi
+        size: 5Gi
       media:
         enabled: true
         existingClaim: media-nfs-pvc
