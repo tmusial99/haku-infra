@@ -9,6 +9,11 @@ chart:
 helmValues:
   jellyfin:
     enabled: true
+    extraEnvVars:
+      - name: TZ
+        value: "Europe/Warsaw"
+      - name: JELLYFIN_CACHE_DIR
+        value: "/tmp/jellyfin-cache"
     persistence:
       config:
         enabled: true
