@@ -14,7 +14,7 @@ helmValues:
     persistence:
       config:
         enabled: true
-        storageClass: longhorn
+        storageClass: local-path
         size: 5Gi
       media:
         enabled: true
@@ -36,7 +36,7 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: local-path
       size: 2Gi
 
   prowlarr:
@@ -45,7 +45,7 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: local-path
       size: 2Gi
 
   sonarr:
@@ -54,7 +54,7 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: local-path
       size: 2Gi
 
   radarr:
@@ -63,7 +63,7 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: local-path
       size: 2Gi
 
   bazarr:
@@ -72,7 +72,7 @@ helmValues:
       TZ: "Europe/Warsaw"
     persistence:
       enabled: true
-      storageClass: longhorn
+      storageClass: local-path
       size: 2Gi
   
   

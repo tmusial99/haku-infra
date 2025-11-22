@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/tmusial99/haku-infra.git
-    targetRevision: master
+    targetRevision: lxc
     path: app-of-apps
     helm:
       releaseName: app-of-apps

@@ -1,30 +1,51 @@
+## Prepare the host
+```
+# In "/etc/default/grub"
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt i915.enable_guc=3"
+
+# Then `update-grub && reboot`
+
+# In "/etc/modules"
+
+overlay
+br_netfilter
+
+# Then `modprobe overlay && modprobe br_netfilter`
+```
+
+## Prepare LXC
+```
+# In "/etc/pve/lxc/xxx.conf
+
+lxc.cgroup2.devices.allow: c 226:1 rwm
+lxc.cgroup2.devices.allow: c 226:128 rwm
+lxc.mount.entry: /dev/dri/card1 dev/dri/card1 none bind,optional,create=file
+lxc.mount.entry: /dev/dri/renderD128 dev/dri/renderD128 none bind,optional,create=file
+
+lxc.mount.auto: proc:rw sys:rw
+lxc.apparmor.profile: unconfined
+lxc.cgroup2.devices.allow: a
+lxc.cap.drop:
+lxc.mount.entry: /dev/kmsg dev/kmsg none bind,create=file
+```
+
 ## Uninstall k3s
 ```
 sudo k3s-uninstall.sh
-chmod +x clear-longhorn-devices.sh
-sudo ./clear-longhorn-devices.sh [--dry-run]
-```
-
-## Disable multipathd if enabled (Longhorn doesn't like it)
-```
-sudo systemctl stop multipathd
-sudo systemctl disable multipathd
-sudo multipath -F
-sudo systemctl restart k3s
 ```
 
 ## Install k3s
 ```
-# Install k3s (without Traefik and local-path)
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --disable local-storage" sh -
-
+# Install k3s (without Traefik)
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --disable traefik --kubelet-arg=fail-swap-on=false" sh -
 
 # Create .kube directory if it doesn't exist
 mkdir -p ~/.kube
 
 # Copy kubeconfig and fix permissions
-sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-sudo chown $(id -u):$(id -g) ~/.kube/config
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chown $(id -u):$(id -g) ~/.kube/config
 
 # Export KUBECONFIG variable permanently
 echo 'export KUBECONFIG=$HOME/.kube/config' >> ~/.bashrc

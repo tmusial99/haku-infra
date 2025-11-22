@@ -11,4 +11,4 @@ global:
       - CreateNamespace=true
       - ServerSideApply=true
   repoURL: https://github.com/tmusial99/haku-infra.git
-  targetRevision: master
+  targetRevision: lxc

@@ -21,7 +21,7 @@ helmValues:
           - grafana.tmdev.pl
     persistence:
       enabled: true
-      storageClassName: "longhorn"
+      storageClassName: "local-path"
       size: 10Gi
       accessModes:
         - ReadWriteOnce
@@ -48,7 +48,7 @@ helmValues:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: "longhorn"
+            storageClassName: "local-path"
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
