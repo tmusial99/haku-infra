@@ -25,6 +25,8 @@ helmValues:
       size: 10Gi
       accessModes:
         - ReadWriteOnce
+    initChownData:
+      enabled: false
     grafana.ini:
       auth:
         disable_login_form: true
