@@ -1,5 +1,5 @@
-name: truenas-pv
+name: media-pv
 namespace: argocd
 syncWave: "-9" # longhorn is also -9
 
-path: apps/truenas-pv
+path: apps/media-pv

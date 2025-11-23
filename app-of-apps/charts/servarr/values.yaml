@@ -18,7 +18,7 @@ helmValues:
         size: 5Gi
       media:
         enabled: true
-        existingClaim: media-nfs-pvc
+        existingClaim: media-pvc
     extraVolumeMounts:
       - name: transcodes
         mountPath: /config/cache/transcodes
