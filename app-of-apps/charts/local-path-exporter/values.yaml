@@ -1,0 +1,12 @@
+name: local-path-exporter
+namespace: monitoring
+syncWave: "-5"
+
+chart:
+  repoURL: https://tmusial99.github.io/local-path-exporter
+  name: local-path-exporter
+  version: 0.1.0
+
+helmValues:
+  serviceMonitor:
+    enabled: true
