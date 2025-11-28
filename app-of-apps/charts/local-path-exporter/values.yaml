@@ -8,6 +8,8 @@ chart:
   version: 0.1.0
 
 helmValues:
+  config:
+    metricTemplate: "pvc-*_{pvc_namespace}_{pvc_name}"
   serviceMonitor:
     enabled: true
     labels:
