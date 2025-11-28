@@ -29,6 +29,7 @@ helmValues:
       enabled: false
     grafana.ini:
       auth:
+        disable_login: true
         disable_login_form: true
         disable_signout_menu: true
       auth.anonymous:
